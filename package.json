@@ -1,0 +1,22 @@
+{
+  "name": "netflixapi",
+  "version": "1.0.0",
+  "description": "Utility tools for Netflix API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/josephmfaulkner/SimpleNetflixDataAPI.git"
+  },
+  "author": "Joseph Faulkner",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/josephmfaulkner/SimpleNetflixDataAPI/issues"
+  },
+  "homepage": "https://github.com/josephmfaulkner/SimpleNetflixDataAPI#readme",
+  "dependencies": {
+    "csv": "^6.2.1"
+  }
+}
