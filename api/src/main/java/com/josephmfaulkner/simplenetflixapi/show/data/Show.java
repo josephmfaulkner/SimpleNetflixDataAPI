@@ -1,13 +1,12 @@
 package com.josephmfaulkner.simplenetflixapi.show.data;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.josephmfaulkner.simplenetflixapi.actor.data.Actor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
-// INSERT INTO TITLE (id,title,type,description,release_year,runtime)
 @Entity
 @Table(name = "title")
 public class Show {
@@ -27,6 +26,26 @@ public class Show {
     @Column(name = "runtime")
     private int runtime;
 
+    @ManyToMany(
+            fetch = FetchType.LAZY,
+            cascade = {
+                    CascadeType.PERSIST,
+                    CascadeType.MERGE
+            }
+    )
+    @JoinTable(
+            name = "title_person",
+            joinColumns = {
+                    @JoinColumn(name = "title_id", referencedColumnName = "id")
+            },
+            inverseJoinColumns = {
+                    @JoinColumn(name = "person_id", referencedColumnName = "id")
+            }
+            )
+    @JsonIgnore
+    private Set<Actor> featuredActors = new HashSet<>();
+
+
     public Show()
     {
 
@@ -38,6 +57,7 @@ public class Show {
         this.description = description;
         this.release_year = release_year;
         this.runtime = runtime;
+
     }
 
     public String getId() {
@@ -86,5 +106,13 @@ public class Show {
 
     public void setRuntime(int runtime) {
         this.runtime = runtime;
+    }
+
+    public Set<Actor> getFeaturedActors() {
+        return featuredActors;
+    }
+
+    public void setFeaturedActors(Set<Actor> featuredActors) {
+        this.featuredActors = featuredActors;
     }
 }

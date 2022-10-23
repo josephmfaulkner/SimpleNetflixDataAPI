@@ -40,7 +40,9 @@ mvn install
 mvn spring-boot:run
 ```
 
-### Test commands
+### Run commands to call API
 ```
 curl http://localhost:3080/showbytitle/Taxi%20Driver
+curl http://localhost:3080/showbyactorname/Robert%20De%20Niro
+curl http://localhost:3080/actorsbyshowtitle/Taxi%20Driver
 ```

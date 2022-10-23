@@ -1,13 +1,12 @@
 package com.josephmfaulkner.simplenetflixapi.actor.data;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.josephmfaulkner.simplenetflixapi.show.data.Show;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
-// INSERT INTO PERSON (id,name) VALUES (3748,'Robert De Niro');
 
 @Entity
 @Table(name = "person")
@@ -19,6 +18,17 @@ public class Actor {
 
     @Column(name = "name")
     private String name;
+
+    @ManyToMany(
+            fetch = FetchType.LAZY,
+            cascade = {
+                    CascadeType.PERSIST,
+                    CascadeType.MERGE
+            },
+            mappedBy = "featuredActors"
+    )
+    @JsonIgnore
+    private Set<Show> shows = new HashSet<>();
 
     public Actor()
     {
@@ -44,4 +54,14 @@ public class Actor {
     public void setName(String name) {
         this.name = name;
     }
+
+
+    public Set<Show> getShows() {
+        return shows;
+    }
+
+    public void setShows(Set<Show> shows) {
+        this.shows = shows;
+    }
+
 }
