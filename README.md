@@ -39,3 +39,8 @@ cd ./api
 mvn install
 mvn spring-boot:run
 ```
+
+### Test commands
+```
+curl http://localhost:3080/showbytitle/Taxi%20Driver
+```
