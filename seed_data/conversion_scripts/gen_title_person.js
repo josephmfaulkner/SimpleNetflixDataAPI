@@ -28,8 +28,8 @@ const writeDataToFile = (rowData, writeFileStream) => {
     character = character.replace(/'/g, '"');
     role = role.replace(/'/g, '"');
 
-    const columns = 'person_id, movie_id, character, role';
-    const values = `'${person_id}','${id}','${character}','${role}'`;
+    const columns = 'person_id, title_id, character, role';
+    const values = `${person_id},'${id}','${character}','${role}'`;
 
     const insertStatement = `INSERT INTO ${tableName} (${columns}) VALUES (${values});`
     

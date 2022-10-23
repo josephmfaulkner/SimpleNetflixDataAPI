@@ -38,8 +38,8 @@ const writeDataToFile = (rowData, writeFileStream) => {
     title = title.replace(/'/g, '"');
     description = description.replace(/'/g, '"');
 
-    const columns = 'id,title,type,description,release_year,runtime,imdb_score,tmdb_score';
-    const values = `'${id}','${title}','${type}','${description}',${release_year},${runtime},${imdb_score},${tmdb_score}`;
+    const columns = 'id,title,type,description,release_year,runtime';
+    const values = `'${id}','${title}','${type}','${description}',${release_year},${runtime}`;
 
     const insertStatement = `INSERT INTO ${tableName} (${columns}) VALUES (${values});`
     
