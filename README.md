@@ -11,6 +11,9 @@ This project was developed on a desktop running Ubuntu 20.04.3 LTS
 * NPM
 * Docker
 * Docker Compose
+* Maven
+* Java SDK
+* Java 8 or higher
 
 ### Install Node Dependencies
 ```
@@ -30,4 +33,9 @@ docker-compose up
 ```
 npx db-migrate up
 ```
-
+### Start the SpringBoot API Application
+```
+cd ./api
+mvn install
+mvn spring-boot:run
+```
